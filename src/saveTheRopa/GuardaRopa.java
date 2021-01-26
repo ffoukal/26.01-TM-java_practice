@@ -20,6 +20,10 @@ public class GuardaRopa {
         }
     }
 
+    public List<Prenda> devolverPrendas(Integer numero){
+        return diccionario.remove(numero);
+    }
+
 
 
 }
