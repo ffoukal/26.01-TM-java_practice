@@ -1,6 +1,7 @@
 package saveTheRopa;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,11 @@ public class GuardaRopa {
 
     private Map<Integer, List<Prenda>> diccionario;
     private Integer contador;
+
+    public GuardaRopa() {
+        this.contador = 1;
+        this.diccionario = new HashMap<>();
+    }
 
     public Integer guardarPrendas(List<Prenda> listaDePrenda){
         this.diccionario.put(contador, listaDePrenda);
