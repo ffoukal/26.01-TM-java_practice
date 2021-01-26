@@ -25,4 +25,13 @@ public class Carrera {
     public void darDeAltaMoto(int velocidad, double aceleracion, double AnguloDeGiro, String patente){
 
     }
+
+    public void eliminarVehiculo(Vehiculo v){
+        vehiculoList.remove(v);
+    }
+
+    public void eliminarVehiculoConPatente(String unaPatente){
+        Vehiculo vehiculoABuscar = (Vehiculo) vehiculoList.stream().filter(vehiculo -> vehiculo.getPatente().compareTo(unaPatente) == 0);
+        eliminarVehiculo(vehiculoABuscar);
+    }
 }
