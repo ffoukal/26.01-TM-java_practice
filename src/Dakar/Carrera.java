@@ -11,6 +11,8 @@ public class Carrera {
     private String nombre;
     private Integer cantidadDeVehiculosPermitidos;
     private List<Vehiculo> vehiculoList;
+    private SocorristaAuto socorristaAuto;
+    private SocorristaMoto socorristaMoto;
 
     public Carrera(Double distancia, Integer premioEnDolares, String nombre, Integer cantidadDeVehiculosPermitidos) {
         this.distancia = distancia;
@@ -18,18 +20,24 @@ public class Carrera {
         this.nombre = nombre;
         this.cantidadDeVehiculosPermitidos = cantidadDeVehiculosPermitidos;
         this.vehiculoList = new ArrayList<>();
+        this.socorristaAuto = new SocorristaAuto();
+        this.socorristaMoto = new SocorristaMoto();
     }
 
 
     public void darDeAltaAuto(int velocidad, double aceleracion, double AnguloDeGiro, String patente){
         if(cantidadDeVehiculosPermitidos > vehiculoList.size()){
             vehiculoList.add(new Auto(velocidad, aceleracion, AnguloDeGiro, patente));
+        } else {
+            throw new RuntimeException("No se puede agregar mas vehiculos");
         }
     }
 
     public void darDeAltaMoto(int velocidad, double aceleracion, double AnguloDeGiro, String patente){
         if(cantidadDeVehiculosPermitidos > vehiculoList.size()){
             vehiculoList.add(new Moto(velocidad, aceleracion, AnguloDeGiro, patente));
+        } else {
+            throw new RuntimeException("No se puede agregar mas vehiculos");
         }
     }
 
@@ -56,7 +64,16 @@ public class Carrera {
         double max = results.keySet().stream().max(Double::compare).get();
 
         return results.get(max);
+    }
 
+    public void socorrerAuto(String patente){
+        Auto vehiculoABuscar = (Auto) vehiculoList.stream().filter(vehiculo -> vehiculo.getPatente().compareTo(patente) == 0);
+        socorristaAuto.socorrer(vehiculoABuscar);
+    }
+
+    public void socorrerMoto(String patente){
+        Moto vehiculoABuscar = (Moto) vehiculoList.stream().filter(vehiculo -> vehiculo.getPatente().compareTo(patente) == 0);
+        socorristaMoto.socorrer(vehiculoABuscar);
     }
 
 }
