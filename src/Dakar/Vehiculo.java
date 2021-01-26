@@ -68,13 +68,12 @@ public class Vehiculo {
 
     @Override
     public String toString() {
-        return "Vehiculo{" +
+        return "Vehiculo: " +
                 "velocidad=" + velocidad +
                 ", aceleracion=" + aceleracion +
                 ", anguloDeGiro=" + anguloDeGiro +
                 ", patente='" + patente + '\'' +
                 ", peso=" + peso +
-                ", ruedas=" + ruedas +
-                '}';
+                ", ruedas=" + ruedas;
     }
 }

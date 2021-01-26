@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Carrera {
     private Double distancia;
@@ -46,7 +47,8 @@ public class Carrera {
     }
 
     public void eliminarVehiculoConPatente(String unaPatente){
-        Vehiculo vehiculoABuscar = (Vehiculo) vehiculoList.stream().filter(vehiculo -> vehiculo.getPatente().compareTo(unaPatente) == 0);
+        Vehiculo vehiculoABuscar = vehiculoList.stream().filter(vehiculo -> vehiculo.getPatente().compareTo(unaPatente) == 0).collect(Collectors.toList()).get(0);
+
         eliminarVehiculo(vehiculoABuscar);
     }
 
@@ -67,13 +69,17 @@ public class Carrera {
     }
 
     public void socorrerAuto(String patente){
-        Auto vehiculoABuscar = (Auto) vehiculoList.stream().filter(vehiculo -> vehiculo.getPatente().compareTo(patente) == 0);
+        Auto vehiculoABuscar = (Auto) buscarPorPatente(patente);
         socorristaAuto.socorrer(vehiculoABuscar);
     }
 
     public void socorrerMoto(String patente){
-        Moto vehiculoABuscar = (Moto) vehiculoList.stream().filter(vehiculo -> vehiculo.getPatente().compareTo(patente) == 0);
+        Moto vehiculoABuscar = (Moto) buscarPorPatente(patente);
         socorristaMoto.socorrer(vehiculoABuscar);
+    }
+
+    public Vehiculo buscarPorPatente(String patente){
+        return vehiculoList.stream().filter(vehiculo -> vehiculo.getPatente().compareTo(patente) == 0).collect(Collectors.toList()).get(0);
     }
 
 }
