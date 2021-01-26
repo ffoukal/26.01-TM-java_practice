@@ -17,17 +17,11 @@ public class Main {
         GuardaRopa guardaropa = new GuardaRopa();
         Integer codigo = guardaropa.guardarPrendas(prendasAGuardar);
         System.out.println("Se guardaron sus prendas, el código para la devolución es: " + codigo);
+        System.out.println("Prendas actuales en los guardarropas");
         guardaropa.mostrarPrendas();
-
-        System.out.println();
-        System.out.println("Prendas actuales en los guardarropas");
         guardaropa.devolverPrendas(codigo);
-
-        System.out.println();
         System.out.println("Sus prendas fueron devueltas");
-
-        System.out.println();
         System.out.println("Prendas actuales en los guardarropas");
-        guardaropa.devolverPrendas(codigo);
+        guardaropa.mostrarPrendas();
     }
 }

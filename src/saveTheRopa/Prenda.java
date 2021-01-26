@@ -26,4 +26,8 @@ public class Prenda {
         this.modelo = modelo;
     }
 
+    @Override
+    public String toString() {
+        return "Prenda: " + this.modelo + " - Marca: " + this.marca;
+    }
 }
